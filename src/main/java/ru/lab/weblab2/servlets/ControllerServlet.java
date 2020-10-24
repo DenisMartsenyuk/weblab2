@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+//TODO Add logging with log4j2
 public class ControllerServlet extends HttpServlet {
 
     private Map<String, String> typesRequests;
@@ -50,4 +51,6 @@ public class ControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processingRequest(request, response);
     }
+
+    //what about other request methods ? Read about servlet method "service"
 }
