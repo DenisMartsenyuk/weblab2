@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,11 +16,14 @@
                 <td>Hit</td>
             </th>
             <tr>
-                <td>100</td>
-                <td>100</td>
-                <td>100</td>
-                <td>true</td>
+                <td><%= request.getParameter("x") %></td>
+                <td><%= request.getParameter("y") %></td>
+                <td><%= request.getParameter("r") %></td>
+                <td><%= request.getAttribute("result") %></td>
             </tr>
         </table>
+    </div>
+    <div>
+        <button>Go back</button>
     </div>
 </body>

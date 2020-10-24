@@ -24,6 +24,14 @@ public class ControllerServlet extends HttpServlet {
     }
 
     private void processingRequest(HttpServletRequest request, HttpServletResponse response) {
+//        Integer count = (Integer) getServletContext().getAttribute("count");
+//        if (count == null) {
+//            count = 0;
+//        } else {
+//            count++;
+//        }
+//        getServletContext().setAttribute("count", count);
+//        System.out.println(getServletContext().getAttribute("count") + " controller"); //todo убрать
         String type = request.getParameter("type");
         String path = typesRequests.get(type);
         if (path == null) {
