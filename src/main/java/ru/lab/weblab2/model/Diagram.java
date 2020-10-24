@@ -7,7 +7,7 @@ import java.util.*;
 public class Diagram {
     private Regional graphField;
     private Map<Double, Set<Point>> dividedPoints;
-    private List<Point> allPoints;
+    private List<Point> allPoints; //do you need this field?
 
     public Diagram() {
         this.graphField = new Field();
