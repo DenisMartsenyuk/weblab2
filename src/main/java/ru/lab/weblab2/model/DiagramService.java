@@ -1,5 +1,9 @@
 package ru.lab.weblab2.model;
 
+import ru.lab.weblab2.model.entities.Point;
+
+import java.util.List;
+
 public class DiagramService {
     private Diagram diagram;
 
@@ -13,7 +17,15 @@ public class DiagramService {
         Double y = Double.parseDouble(yValue);
         Double r = Double.parseDouble(rValue);
 
-        return diagram.isHit(new Point(x, y, r));
+        return diagram.isAddPoint(new Point(x, y, r));
+    }
+
+    public List<Point> getTablePoints() {
+        return diagram.getAllPoints();
+    }
+
+    public List<Point> getGraphPoints(Double r) {
+        return diagram.getDividedPoints(r);
     }
 
 }

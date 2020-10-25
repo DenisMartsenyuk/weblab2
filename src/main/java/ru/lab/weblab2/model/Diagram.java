@@ -1,13 +1,17 @@
 package ru.lab.weblab2.model;
 
+import ru.lab.weblab2.model.entities.Point;
+import ru.lab.weblab2.services.checkers.Field;
+import ru.lab.weblab2.services.checkers.HitChecker;
+
 import java.util.*;
 
 //todo рассмотреть вариант синглтона
 //todo о боги, надеюсь это работает
 public class Diagram {
-    private Regional graphField;
+    private HitChecker graphField;
     private Map<Double, Set<Point>> dividedPoints;
-    private List<Point> allPoints; //do you need this field?
+    private List<Point> allPoints;
 
     public Diagram() {
         this.graphField = new Field();
@@ -23,22 +27,24 @@ public class Diagram {
         return allPoints;
     }
 
-    public boolean isHit(Point point) {
-        if (graphField.isHit(point)) {
-            point.setIsHit(true);
-            Double r = point.getR();
-            Set<Point> updateSet = dividedPoints.get(r);
-            if (updateSet == null) {
-                updateSet = new HashSet<>();
-            }
-            updateSet.add(point);
-            dividedPoints.remove(r);
-            dividedPoints.put(r, updateSet);
-            allPoints.add(point);
-            return true;
-        }
-        point.setIsHit(false);
+    public boolean isAddPoint(Point point) {
+        Boolean hit = graphField.isHit(point);
+        point.setHit(hit);
         allPoints.add(point);
-        return false;
+        if (hit) {
+            addToDividedPoints(point);
+        }
+        return hit;
+    }
+
+    private void addToDividedPoints(Point point) {
+        Double r = point.getR();
+        Set<Point> updateSet = dividedPoints.get(r);
+        if (updateSet == null) {
+            updateSet = new HashSet<>();
+        }
+        updateSet.add(point);
+        dividedPoints.remove(r);
+        dividedPoints.put(r, updateSet);
     }
 }

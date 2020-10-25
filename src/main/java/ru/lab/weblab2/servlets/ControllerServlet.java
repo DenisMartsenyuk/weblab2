@@ -21,17 +21,10 @@ public class ControllerServlet extends HttpServlet {
 
     private void fillingMap() {
         this.typesRequests.put("check", "/AreaCheckServlet");
+        this.typesRequests.put("loadStart", "/LoadStartServlet");
     }
 
     private void processingRequest(HttpServletRequest request, HttpServletResponse response) {
-//        Integer count = (Integer) getServletContext().getAttribute("count");
-//        if (count == null) {
-//            count = 0;
-//        } else {
-//            count++;
-//        }
-//        getServletContext().setAttribute("count", count);
-//        System.out.println(getServletContext().getAttribute("count") + " controller"); //todo убрать
         String type = request.getParameter("type");
         String path = typesRequests.get(type);
         if (path == null) {
@@ -51,14 +44,7 @@ public class ControllerServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processingRequest(request, response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processingRequest(request, response);
-    }
-
-    //what about other request methods ? Read about servlet method "service"
 }
