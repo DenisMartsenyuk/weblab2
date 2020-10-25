@@ -21,26 +21,20 @@ public class ControllerServlet extends HttpServlet {
 
     private void fillingMap() {
         this.typesRequests.put("check", "/AreaCheckServlet");
-        this.typesRequests.put("loadStart", "/LoadStartServlet");
+        this.typesRequests.put("loadStart" ,"/index.jsp");
+
     }
 
-    private void processingRequest(HttpServletRequest request, HttpServletResponse response) {
+    private void processingRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String type = request.getParameter("type");
         String path = typesRequests.get(type);
         if (path == null) {
             path = "/error.jsp";
+            request.setAttribute("errorMessage", "This type of request cannot be processed.");
+            //todo надо тут хорошо с ошибками поработать
         }
-        try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            System.out.println("ну это вообще отмена");
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println("ну это вообще отмена2");
-            e.printStackTrace();
-        }
-        //todo сделать норм ошибки
+        RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+        dispatcher.forward(request, response);
     }
 
     @Override

@@ -2,10 +2,9 @@ package ru.lab.weblab2.services.checkers;
 
 import ru.lab.weblab2.model.entities.Point;
 
-//TODO read todo in Regional interface
-public class Field implements HitChecker {
+public final class Field implements HitChecker {
     @Override
-    public boolean isHit(Point point) {
-        return true; //todo тож надо написать
+    public boolean isHit(Double x, Double y, Double r) {
+        return true; //todo написать
     }
 }

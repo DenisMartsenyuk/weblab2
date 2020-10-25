@@ -1,12 +1,13 @@
 package ru.lab.weblab2.services.validators.parsers;
 
+import ru.lab.weblab2.services.validators.parsers.exceptions.ParserException;
+
 public final class DoubleParser implements Parser<Double> {
     @Override
     public Double parse(String value) throws ParserException {
         value = value.replace(',','.');
         try {
-            Double result = Double.parseDouble(value);
-            return result;
+            return Double.parseDouble(value);
         } catch (Exception e) {
             throw new ParserException();
         }

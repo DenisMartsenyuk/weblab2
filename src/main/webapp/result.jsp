@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
         <title>Result</title>
@@ -26,7 +27,7 @@
     <div>
         <form action="/weblab2/ControllerServlet" method="post">
             <input type="hidden" name="type" value="loadStart">
-            <input type="submit">
+            <button type="submit">Вернуться на главную страницу</button>
         </form>
     </div>
 </body>

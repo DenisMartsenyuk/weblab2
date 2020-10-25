@@ -1,9 +1,17 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <title>Error</title>
+        <title>Ошибка</title>
     </head>
-<body>
-I fuck your mother
-</body>
+    <body>
+        <header>
+            <h1>Ошибка</h1>
+        </header>
+        <div>
+            Текст ошибки:  <%= request.getAttribute("errorMessage") %>
+        </div>
+    </body>
+</html>

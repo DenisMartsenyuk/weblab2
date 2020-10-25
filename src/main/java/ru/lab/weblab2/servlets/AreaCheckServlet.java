@@ -5,7 +5,7 @@ import ru.lab.weblab2.model.storages.PointsStorage;
 import ru.lab.weblab2.services.checkers.Field;
 import ru.lab.weblab2.services.factories.FactoryPoint;
 import ru.lab.weblab2.services.validators.ValidationException;
-import ru.lab.weblab2.services.validators.parsers.ParserException;
+import ru.lab.weblab2.services.validators.parsers.exceptions.ParserException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -37,11 +37,9 @@ public class AreaCheckServlet extends HttpServlet {
             pointsStorage.addPoint(point);
             request.setAttribute("result", point.getHit());
             request.getRequestDispatcher("/result.jsp").forward(request, response);
-        } catch (ParserException e) {
-            System.out.println("не число");
-        } catch (ValidationException e) {
-            System.out.println("не всходит в ограничения");
-            //todo страница ошибки
+        } catch (ParserException | ValidationException e) {
+            request.setAttribute("errorMessage", e.getMessage());
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
 }
