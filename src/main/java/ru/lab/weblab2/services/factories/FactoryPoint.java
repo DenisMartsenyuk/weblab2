@@ -9,22 +9,29 @@ import ru.lab.weblab2.services.validators.limiters.xyLimiter;
 import ru.lab.weblab2.services.validators.parsers.ParserException;
 
 public final class FactoryPoint {
+    private static FactoryPoint instance;
 
-    //todo singleton
     private final HitChecker field;
     private final DoubleValidator xyValidator;
     private final DoubleValidator rValidator;
 
-    public FactoryPoint(HitChecker field) {
+    private FactoryPoint(HitChecker field) {
         this.field = field;
         this.xyValidator = new DoubleValidator(new xyLimiter());
         this.rValidator = new DoubleValidator(new rLimiter());
     }
 
+    public static FactoryPoint getInstance(HitChecker field) {
+        if (instance == null) {
+            instance = new FactoryPoint(field);
+        }
+        return instance;
+    }
+
     public Point buildPoint(String xValue, String yValue, String rValue) throws ValidationException, ParserException {
         Double x = xyValidator.getValidValue(xValue);
         Double y = xyValidator.getValidValue(yValue);
-        Double r = xyValidator.getValidValue(rValue);
+        Double r = rValidator.getValidValue(rValue);
         Point point = new Point(x, y, r);
         point.setHit(field.isHit(point));
         return point;

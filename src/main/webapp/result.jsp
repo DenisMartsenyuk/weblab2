@@ -24,6 +24,9 @@
         </table>
     </div>
     <div>
-        <button>Go back</button>
+        <form action="/weblab2/ControllerServlet" method="post">
+            <input type="hidden" name="type" value="loadStart">
+            <input type="submit">
+        </form>
     </div>
 </body>
