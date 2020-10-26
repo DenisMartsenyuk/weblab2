@@ -4,11 +4,16 @@ import ru.lab.weblab2.model.entities.Point;
 import ru.lab.weblab2.services.checkers.HitChecker;
 import ru.lab.weblab2.services.validators.ValidationException;
 import ru.lab.weblab2.services.validators.Validator;
-import ru.lab.weblab2.services.validators.limiters.rLimiter;
-import ru.lab.weblab2.services.validators.limiters.xyLimiter;
+import ru.lab.weblab2.services.validators.limiters.IntervalLimiter;
+import ru.lab.weblab2.services.validators.limiters.Limiter;
+import ru.lab.weblab2.services.validators.limiters.ValueLimiter;
+import ru.lab.weblab2.services.trash.xyLimiter;
 import ru.lab.weblab2.services.validators.parsers.DoubleParser;
 import ru.lab.weblab2.services.validators.parsers.Parser;
 import ru.lab.weblab2.services.validators.parsers.exceptions.ParserException;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public final class FactoryPoint {
     private static FactoryPoint instance;
@@ -20,7 +25,15 @@ public final class FactoryPoint {
     private FactoryPoint(HitChecker field) {
         this.field = field;
         this.doubleParser = new DoubleParser();
-        this.validator = new Validator<>(new xyLimiter(), new xyLimiter(), new rLimiter());
+
+        Set<Double> rValues = new HashSet<>(); //todo мб заполнить как-то иначе
+        rValues.add(1.0);
+        rValues.add(1.5);
+        rValues.add(2.0);
+        rValues.add(2.5);
+        rValues.add(3.0);
+        Limiter xyInterval = new IntervalLimiter(-5.0, 5.0, false, false);
+        this.validator = new Validator<>(xyInterval, xyInterval, new ValueLimiter<>(rValues));
     }
 
     public static FactoryPoint getInstance(HitChecker field) {

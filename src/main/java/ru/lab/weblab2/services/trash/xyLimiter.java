@@ -1,4 +1,6 @@
-package ru.lab.weblab2.services.validators.limiters;
+package ru.lab.weblab2.services.trash;
+
+import ru.lab.weblab2.services.validators.limiters.Limiter;
 
 public final class xyLimiter implements Limiter<Double> {
     @Override

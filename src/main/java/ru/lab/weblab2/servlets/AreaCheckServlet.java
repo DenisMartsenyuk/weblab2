@@ -29,7 +29,7 @@ public class AreaCheckServlet extends HttpServlet {
 
         String x = request.getParameter("x");
         String y = request.getParameter("y");
-        String r = request.getParameter("r");
+        String r = request.getParameter("r"); //todo может не прийти значение
 
         FactoryPoint factoryPoint = FactoryPoint.getInstance(new Field());
         try {
