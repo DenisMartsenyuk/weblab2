@@ -16,8 +16,6 @@ import java.io.IOException;
 
 public class AreaCheckServlet extends HttpServlet {
 
-    //TODO block request with non POST method
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = getServletContext();
@@ -33,15 +31,15 @@ public class AreaCheckServlet extends HttpServlet {
         FactoryPoint factoryPoint = FactoryPoint.getInstance(new Field());
         try {
             Point point = factoryPoint.buildPoint(x, y, r);
-            pointsStorage.addPoint(point); //todo пересмотреть раоту этого сервлета
+            pointsStorage.addPoint(point);
             context.setAttribute("lastR", r);
             context.setAttribute("pointsStorage", pointsStorage);
             context.setAttribute("allPoints", pointsStorage.getAllPoints());
             request.setAttribute("result", point.getHit());
-            request.getRequestDispatcher("/result.jsp").forward(request, response);
+            request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
         } catch (ParserException | ValidationException e) {
             request.setAttribute("errorMessage", e.getMessage());
-            request.getRequestDispatcher("/error.jsp").forward(request, response);
+            request.getRequestDispatcher("/jsp/error.jsp").forward(request, response);
         }
     }
 }

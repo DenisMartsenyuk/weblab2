@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <title>Web lab 2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/web/trash/ban_back_script.js"></script>
     <script src="${pageContext.request.contextPath}/js/index_script.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index_style.css" type="text/css">
 </head>

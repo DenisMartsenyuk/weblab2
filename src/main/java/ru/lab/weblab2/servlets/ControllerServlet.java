@@ -28,7 +28,7 @@ public class ControllerServlet extends HttpServlet {
         String type = request.getParameter("type");
         String path = typesRequests.get(type);
         if (path == null) {
-            path = "/error.jsp";
+            path = "/jsp/error.jsp";
             request.setAttribute("errorMessage", "Такой тип запроса не может быть обработан.");
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(path);
