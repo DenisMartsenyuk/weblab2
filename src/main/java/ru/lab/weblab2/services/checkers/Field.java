@@ -1,10 +1,20 @@
 package ru.lab.weblab2.services.checkers;
 
-import ru.lab.weblab2.model.entities.Point;
-
 public final class Field implements HitChecker {
     @Override
     public boolean isHit(Double x, Double y, Double r) {
-        return true; //todo написать
+        if (x <= 0 && y >= 0 && (4 * x * x <= r * r) && y <= r) {
+            return true;
+        }
+
+        if (x >= 0 && y >= 0 && 2 * y <= r - 2 * x) {
+            return true;
+        }
+
+        if(x >= 0 && y <= 0 && (4 * x * x + 4 * y * y <= r * r)) {
+            return true;
+        }
+
+        return false;
     }
 }

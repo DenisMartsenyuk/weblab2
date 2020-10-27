@@ -12,6 +12,14 @@ public final class Point {
         this.r = r;
     }
 
+    public Double getX() {
+        return x;
+    }
+
+    public Double getY() {
+        return y;
+    }
+
     public void setHit(Boolean hit) {
         this.hit = hit;
     }

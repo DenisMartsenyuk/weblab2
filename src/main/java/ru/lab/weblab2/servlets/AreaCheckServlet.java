@@ -29,12 +29,15 @@ public class AreaCheckServlet extends HttpServlet {
 
         String x = request.getParameter("x");
         String y = request.getParameter("y");
-        String r = request.getParameter("r"); //todo может не прийти значение
+        String r = request.getParameter("r");
 
         FactoryPoint factoryPoint = FactoryPoint.getInstance(new Field());
         try {
             Point point = factoryPoint.buildPoint(x, y, r);
             pointsStorage.addPoint(point);
+            context.setAttribute("pointsStorage", pointsStorage);
+            context.setAttribute("allPoints", pointsStorage.getAllPoints());
+            context.setAttribute("dividedPoints", pointsStorage.getDividedPoints(point.getR()));
             request.setAttribute("result", point.getHit());
             request.getRequestDispatcher("/result.jsp").forward(request, response);
         } catch (ParserException | ValidationException e) {

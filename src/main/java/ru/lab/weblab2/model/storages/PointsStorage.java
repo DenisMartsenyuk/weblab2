@@ -36,6 +36,9 @@ public final class PointsStorage {
     }
 
     public List<Point> getDividedPoints(Double r) {
-        return new ArrayList<>(dividedPoints.get(r));
+        if (dividedPoints.containsKey(r)) {
+            return new ArrayList<>(dividedPoints.get(r));
+        }
+        return new ArrayList<>();
     }
 }

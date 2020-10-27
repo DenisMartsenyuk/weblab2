@@ -7,7 +7,6 @@ import ru.lab.weblab2.services.validators.Validator;
 import ru.lab.weblab2.services.validators.limiters.IntervalLimiter;
 import ru.lab.weblab2.services.validators.limiters.Limiter;
 import ru.lab.weblab2.services.validators.limiters.ValueLimiter;
-import ru.lab.weblab2.services.trash.xyLimiter;
 import ru.lab.weblab2.services.validators.parsers.DoubleParser;
 import ru.lab.weblab2.services.validators.parsers.Parser;
 import ru.lab.weblab2.services.validators.parsers.exceptions.ParserException;
