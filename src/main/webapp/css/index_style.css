@@ -1,13 +1,15 @@
 :root {
     font-size: 16px;
-    font-family: Verdana, sans-serif;
+    font-family: Roboto-Italic, sans-serif;
 
     --border-color: rgb(185, 185, 185);
-    --border: 1px solid var(--border-color);
+    --border: 1px solid var(--color1);
+    --border-radius: 3px;
     --color1: #32d4e2;
     --color2: #47A1AA;
     --color3: #EDFEFF;
     --dark-color: rgb(30, 30, 30);
+    --height: 30rem;
 }
 
 .points {
@@ -22,7 +24,7 @@ html {
 
 h1 {
     font-size: 28px;
-    font-family: Verdana, sans-serif;
+    font-family: Roboto-Regular, sans-serif;
 }
 
 header {
@@ -30,6 +32,7 @@ header {
     text-align: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    border-radius: 10px;
 }
 
 .middle {
@@ -38,7 +41,9 @@ header {
 
 aside {
     width: 20rem;
+    height: var(--height);
     border: var(--border);
+    border-radius: 10px;
 }
 
 .left {
@@ -88,6 +93,7 @@ aside {
 main {
     margin-left: 21rem;
     margin-right: 21rem;
+    height: var(--height);
     border: var(--border);
 }
 

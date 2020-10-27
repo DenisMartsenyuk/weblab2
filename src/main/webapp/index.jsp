@@ -6,9 +6,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Web lab 2</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index_style.css" type="text/css">
-    <script src="${pageContext.request.contextPath}/js/index_script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/ban_back_script.js"></script>
+    <script src="${pageContext.request.contextPath}/js/index_script.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index_style.css" type="text/css">
 </head>
 <body>
 <header>
@@ -18,9 +19,8 @@
 <div class="middle">
     <aside class="left">
         <section>
-            <div class="header">График</div>
-            <div>
-                <svg onclick="clickSvg(this)" id="graph" xmlns="http://www.w3.org/2000/svg">
+            <div id="svg-wrapper">
+                <svg onclick="clickSvg(evt)" id="graph" xmlns="http://www.w3.org/2000/svg">
                     <polygon class="figures" points="150,150 150,50 100,50, 100,150"></polygon>
 
                     <path  class="figures" d="M 150 200 A 50 50, 90, 0, 0, 200 150 L 150 150 Z"></path>
@@ -62,6 +62,7 @@
                         <circle class="points" r="3" cx="${cx}" cy="${cy}"></circle>
                     </c:forEach>
 
+                    <polygon points="0,0 0,300 300,300, 300,0" opacity="0"></polygon>
                 </svg>
             </div>
         </section>
@@ -97,11 +98,11 @@
                 <input type="hidden" name="type" value="check">
                 <div>
                     <h4>X</h4>
-                    <input onchange="validation(this)" class="max-width" placeholder="(5;5)" name="x" maxlength="17">
+                    <input onchange="validation(this)" placeholder="(5;5)" name="x" maxlength="17" id="x-field">
                 </div>
                 <div>
                     <h4>Y</h4>
-                    <input onchange="validation(this)" placeholder="(5;5)" name="y" maxlength="17">
+                    <input onchange="validation(this)" placeholder="(5;5)" name="y" maxlength="17" id="y-field">
                 </div>
                 <div>
                     <h4>R</h4>
@@ -112,8 +113,7 @@
                     <label><input onclick="selectCheckBox(this)" type="checkbox" value="3" name="r">3.0</label>
                 </div>
                 <div>
-                    <button onclick="" id="submit-button">Отправить</button>
-<%--                    todo валидация--%>
+                    <button type="button" onclick="buildRequest()">Отправить</button>
                 </div>
             </form>
         </div>

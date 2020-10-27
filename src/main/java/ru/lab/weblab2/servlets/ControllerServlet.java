@@ -30,8 +30,7 @@ public class ControllerServlet extends HttpServlet {
         String path = typesRequests.get(type);
         if (path == null) {
             path = "/error.jsp";
-            request.setAttribute("errorMessage", "This type of request cannot be processed.");
-            //todo надо тут хорошо с ошибками поработать
+            request.setAttribute("errorMessage", "Такой тип запроса не может быть обработан.");
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(path);
         dispatcher.forward(request, response);

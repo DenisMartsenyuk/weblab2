@@ -1,14 +1,40 @@
+$(document).ready(function(){
+    setTimeout(banBack, 1000);
+});
+
+function banBack() {
+    history.pushState(null, null, location.href);
+    window.onpopstate = function(event) {
+        history.go(1);
+    };
+    console.log("xixi ");
+} //todo убрать если что
+
+function clickSvg(evt) {
+    let element = evt.target;
+    let position = element.getBoundingClientRect();
+    let srcX = evt.clientX - position.left;
+    let srcY = evt.clientY - position.top;
+    let x = (srcX - 150) / 100.0;
+    let y = (150 - srcY) / 100.0;
+    buildClickRequest(x, y);
+}
+
+
 function selectCheckBox(checkBox) {
     $(':checkbox[name="r"]').prop("checked", false);
     $(checkBox).prop("checked", true);
+    let form = document.createElement('form');
 }
 
 function validation(input) {
     let value = $(input).val().replace(/,/,".");
     if (value === "" || isNaN(value) || (Number(value) >= 5 || Number(value) <= -5)) {
         setDesignInput(input, "#f5e0d9", "2px solid #f64072");
+        return false;
     } else {
         setDesignInput(input, "WHITE", "1px solid #000000");
+        return true;
     }
 }
 
@@ -18,91 +44,21 @@ function setDesignInput(input, color, border) {
 }
 
 function buildRequest() {
-
+    if (validation($("#x-field")) && validation($("#y-field"))) {
+        $("#request").submit();
+    }
 }
 
-function clickSvg(svg) {
-    // let point = document.createElement("circle");
-    // point.className = "figures";
-    // point.cx = "150";
-    // point.cy = "150";
-    // point.r = "10";
-    // $(svg).append(point);
-    // let e = svg.target;
-    // let dim = e.getBoundingClientRect();
-    // let x = svg.clientX - dim.left;
-    // let y = svg.clientY - dim.top;
-    // alert("x: "+x+" y:"+y);
-    let p = $("#graph").createSVGPoint();
-    p.x = e.clientX;
-    p.y = e.clientY;
-    let ctm = $("#graph").getScreenCTM().inverse();
-    p =  p.matrixTransform(ctm);
-    console.log("x: "+p.x+" y:"+p.y);
+function buildClickRequest(x, y) {
+    let r = Number($('input[name="radioGroup"]:checked').val());
+    x = Number(x);
+    y = Number(y);
+    x = x * r;
+    y = y * r;
+    console.log(x);
+    console.log(y);
+    document.getElementById('x-field').value = x.toString();
+    $("#x-field").val(x.toString());
+    $("#y-field").val(y.toString());
+    $("#request").submit();
 }
-
-// let debug = false;
-
-
-// function getX() {
-//     return Number($('input[name="radioGroup"]:checked').val());
-// }
-//
-// function whiteColorInput() {
-//     $("#yValue").css("border", "1px solid #000000");
-//     $("#yValue").css("background", "WHITE");
-// }
-//
-// function getAndCheckY() {
-//     let srcY = $("#yValue").val().replace(/,/,".");
-//     if (debug) {
-//         console.log("y = " + srcY);
-//     }
-//
-//     if (srcY === "" || isNaN(srcY) || (Number(srcY) > 3 || Number(srcY) < -3)) {
-//         $("#yValue").css("border", "2px solid #f64072");
-//         $("#yValue").css("background", "#f5e0d9");
-//     } else {
-//         return Number(srcY);
-//     }
-// }
-//
-// function selectR(button) {
-//     $('.selected').removeClass("selected").addClass("not_selected");
-//     button.classList.remove("not_selected");
-//     button.classList.add("selected")
-//
-//     if (debug) {
-//         console.log("r = " + button.value);
-//     }
-// }
-
-// function buildRequest() {
-//
-//     x = getX();
-//     y = getAndCheckY();
-//     r = $('.selected').val()
-//
-//     if (debug) {
-//         console.log(x + " " + y + " " + r);
-//     }
-//
-//     if (x !== undefined && y !== undefined && r !== undefined) {
-//         $.ajax({
-//             url: "php/handler_is_hit.php",
-//             type: "GET",
-//             data: {"x": x, "y": y, "r": r},
-//             success: function (response) {
-//                 addRowTable(response);
-//             }
-//         });
-//     }
-// }
-//
-// function addRowTable(data) {
-//     $("#tableResult").append(data);
-//
-//     if (debug) {
-//         console.log(data);
-//     }
-// }

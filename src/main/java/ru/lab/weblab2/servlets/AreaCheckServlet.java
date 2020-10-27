@@ -25,7 +25,7 @@ public class AreaCheckServlet extends HttpServlet {
         PointsStorage pointsStorage = (PointsStorage) context.getAttribute("pointsStorage");
         if (pointsStorage == null) {
             pointsStorage = new PointsStorage();
-        } //todo мб тоже не робит
+        }
 
         String x = request.getParameter("x");
         String y = request.getParameter("y");

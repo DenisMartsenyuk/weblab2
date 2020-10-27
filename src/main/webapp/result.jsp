@@ -4,18 +4,19 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <title>Result</title>
-
+        <title>Результат</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/ban_back_script.js"></script>
     </head>
 <body>
     <div>
         <table>
-            <th>
-                <td>x</td>
-                <td>y</td>
-                <td>r</td>
-                <td>Hit</td>
-            </th>
+            <tr>
+                <th>X</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>IS HIT</th>
+            </tr>
             <tr>
                 <td><%= request.getParameter("x") %></td>
                 <td><%= request.getParameter("y") %></td>
