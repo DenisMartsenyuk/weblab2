@@ -8,8 +8,8 @@ public final class Validator<T, U, V> {
     private final Limiter<U> yLimiter;
     private final Limiter<V> rLimiter;
 
-    public Validator(Limiter<T> xlimiter, Limiter<U> yLimiter, Limiter<V> rLimiter) {
-        this.xLimiter = xlimiter;
+    public Validator(Limiter<T> xLimiter, Limiter<U> yLimiter, Limiter<V> rLimiter) {
+        this.xLimiter = xLimiter;
         this.yLimiter = yLimiter;
         this.rLimiter = rLimiter;
     }

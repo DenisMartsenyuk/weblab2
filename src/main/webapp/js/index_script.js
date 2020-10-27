@@ -1,15 +1,3 @@
-$(document).ready(function(){
-    setTimeout(banBack, 1000);
-});
-
-function banBack() {
-    history.pushState(null, null, location.href);
-    window.onpopstate = function(event) {
-        history.go(1);
-    };
-    console.log("xixi ");
-} //todo убрать если что
-
 function clickSvg(evt) {
     let element = evt.target;
     let position = element.getBoundingClientRect();
@@ -20,11 +8,31 @@ function clickSvg(evt) {
     buildClickRequest(x, y);
 }
 
-
 function selectCheckBox(checkBox) {
     $(':checkbox[name="r"]').prop("checked", false);
     $(checkBox).prop("checked", true);
-    let form = document.createElement('form');
+    drawPoints(checkBox.value);
+}
+
+function drawPoints(value) {
+    let table = document.querySelector('#table-result');
+    let group = document.getElementById("point-storage");
+    let points = "";
+    for (let i = 1; i < table.rows.length; i++) {
+        if (table.rows[i].cells[3].textContent === "true" && Number(table.rows[i].cells[2].textContent) === Number(value)) {
+            points = points + getDescriptionPoint(Number(table.rows[i].cells[0].textContent), Number(table.rows[i].cells[1].textContent), Number(table.rows[i].cells[2].textContent));
+        }
+    }
+    group.innerHTML = points;
+}
+
+function getDescriptionPoint(x, y, r) {
+    x = Number(x);
+    y = Number(y);
+    r = Number(r);
+    x = 150.0 + x * 100.0 / r;
+    y = 150.0 - y * 100.0 / r;
+    return '<circle class="points" r="3" cx="' + x + '" cy="' + y + '"></circle>';
 }
 
 function validation(input) {
@@ -50,15 +58,13 @@ function buildRequest() {
 }
 
 function buildClickRequest(x, y) {
-    let r = Number($('input[name="radioGroup"]:checked').val());
+    let r = Number($('input[name="r"]:checked').val());
+    console.log(r + " r");
     x = Number(x);
     y = Number(y);
     x = x * r;
     y = y * r;
-    console.log(x);
-    console.log(y);
-    document.getElementById('x-field').value = x.toString();
-    $("#x-field").val(x.toString());
-    $("#y-field").val(y.toString());
-    $("#request").submit(); //todo понять что тут не так
+    $("#x-field").val(x);
+    $("#y-field").val(y);
+    $("#request").submit();
 }

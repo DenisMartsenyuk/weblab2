@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <title>Результат</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/ban_back_script.js"></script>
+        <script src="${pageContext.request.contextPath}/web/trash/ban_back_script.js"></script>
     </head>
 <body>
     <div>

@@ -2,16 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html lang="ru">
+<html id="main" lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Web lab 2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/ban_back_script.js"></script>
+    <script src="${pageContext.request.contextPath}/web/trash/ban_back_script.js"></script>
     <script src="${pageContext.request.contextPath}/js/index_script.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index_style.css" type="text/css">
 </head>
-<body>
+<body id="main-doc">
 <header>
     <h1>Лабораторная работа №2. Вариант: 4577.</h1>
 </header>
@@ -56,11 +56,14 @@
                     <text x="160" y="205">-R/2</text>
                     <text x="160" y="255">-R</text>
 
-                    <c:forEach items="${dividedPoints}" var="point">
-                        <c:set value="${150 + point.x * 100 / point.r}" var="cx"></c:set>
-                        <c:set value="${150 - point.y * 100 / point.r}" var="cy"></c:set>
-                        <circle class="points" r="3" cx="${cx}" cy="${cy}"></circle>
-                    </c:forEach>
+                    <g id="point-storage">
+
+                    </g>
+<%--                    <c:forEach items="${dividedPoints}" var="point">--%>
+<%--                        <c:set value="${150 + point.x * 100 / point.r}" var="cx"></c:set>--%>
+<%--                        <c:set value="${150 - point.y * 100 / point.r}" var="cy"></c:set>--%>
+<%--                        <circle class="points" r="3" cx="${cx}" cy="${cy}"></circle>--%>
+<%--                    </c:forEach>--%>
 
                     <polygon points="0,0 0,300 300,300, 300,0" opacity="0"></polygon>
                 </svg>

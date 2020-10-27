@@ -34,6 +34,7 @@ public class AreaCheckServlet extends HttpServlet {
         try {
             Point point = factoryPoint.buildPoint(x, y, r);
             pointsStorage.addPoint(point); //todo пересмотреть раоту этого сервлета
+            context.setAttribute("lastR", r);
             context.setAttribute("pointsStorage", pointsStorage);
             context.setAttribute("allPoints", pointsStorage.getAllPoints());
             context.setAttribute("dividedPoints", pointsStorage.getDividedPoints(point.getR()));
