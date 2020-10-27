@@ -97,15 +97,15 @@
             <form method="post" action="${pageContext.request.contextPath}/ControllerServlet" id="request">
                 <input type="hidden" name="type" value="check">
                 <div>
-                    <h4>X</h4>
-                    <input onchange="validation(this)" placeholder="(5;5)" name="x" maxlength="17" id="x-field">
+                    <div class="labels">X</div>
+                    <input onchange="validation(this)" placeholder="(5;5)" name="x" maxlength="17" id="x-field" class="field">
                 </div>
                 <div>
-                    <h4>Y</h4>
-                    <input onchange="validation(this)" placeholder="(5;5)" name="y" maxlength="17" id="y-field">
+                    <label class="labels">Y</label>
+                    <input onchange="validation(this)" placeholder="(5;5)" name="y" maxlength="17" id="y-field" class="field">
                 </div>
-                <div>
-                    <h4>R</h4>
+                <div >
+                    <label class="labels">R</label>
                     <label><input onclick="selectCheckBox(this)" type="checkbox" value="1" name="r" checked>1.0</label>
                     <label><input onclick="selectCheckBox(this)" type="checkbox" value="1.5" name="r">1.5</label>
                     <label><input onclick="selectCheckBox(this)" type="checkbox" value="2" name="r">2.0</label>
@@ -113,7 +113,7 @@
                     <label><input onclick="selectCheckBox(this)" type="checkbox" value="3" name="r">3.0</label>
                 </div>
                 <div>
-                    <button type="button" onclick="buildRequest()">Отправить</button>
+                    <button class="god-button" type="button" onclick="buildRequest()">Отправить</button>
                 </div>
             </form>
         </div>

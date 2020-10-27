@@ -2,14 +2,14 @@ package ru.lab.weblab2.services.factories;
 
 import ru.lab.weblab2.model.entities.Point;
 import ru.lab.weblab2.services.checkers.HitChecker;
-import ru.lab.weblab2.services.validators.ValidationException;
+import ru.lab.weblab2.services.validators.exceptions.ValidationException;
 import ru.lab.weblab2.services.validators.Validator;
-import ru.lab.weblab2.services.validators.limiters.IntervalLimiter;
-import ru.lab.weblab2.services.validators.limiters.Limiter;
-import ru.lab.weblab2.services.validators.limiters.ValueLimiter;
-import ru.lab.weblab2.services.validators.parsers.DoubleParser;
-import ru.lab.weblab2.services.validators.parsers.Parser;
-import ru.lab.weblab2.services.validators.parsers.exceptions.ParserException;
+import ru.lab.weblab2.services.limiters.IntervalLimiter;
+import ru.lab.weblab2.services.limiters.Limiter;
+import ru.lab.weblab2.services.limiters.ValueLimiter;
+import ru.lab.weblab2.services.parsers.DoubleParser;
+import ru.lab.weblab2.services.parsers.Parser;
+import ru.lab.weblab2.services.parsers.exceptions.ParserException;
 
 import java.util.HashSet;
 import java.util.Set;

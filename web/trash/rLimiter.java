@@ -1,6 +1,6 @@
 package ru.lab.weblab2.services.trash;
 
-import ru.lab.weblab2.services.validators.limiters.Limiter;
+import ru.lab.weblab2.services.limiters.Limiter;
 
 public final class rLimiter implements Limiter<Double> {
     @Override

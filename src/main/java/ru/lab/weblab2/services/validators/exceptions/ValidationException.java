@@ -1,4 +1,4 @@
-package ru.lab.weblab2.services.validators;
+package ru.lab.weblab2.services.validators.exceptions;
 
 public final class ValidationException extends Exception {
     public ValidationException() {

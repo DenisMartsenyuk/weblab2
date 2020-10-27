@@ -1,6 +1,6 @@
-package ru.lab.weblab2.services.validators.parsers;
+package ru.lab.weblab2.services.parsers;
 
-import ru.lab.weblab2.services.validators.parsers.exceptions.ParserException;
+import ru.lab.weblab2.services.parsers.exceptions.ParserException;
 
 public final class DoubleParser implements Parser<Double> {
     @Override

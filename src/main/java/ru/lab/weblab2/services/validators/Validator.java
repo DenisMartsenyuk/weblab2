@@ -1,6 +1,7 @@
 package ru.lab.weblab2.services.validators;
 
-import ru.lab.weblab2.services.validators.limiters.Limiter;
+import ru.lab.weblab2.services.limiters.Limiter;
+import ru.lab.weblab2.services.validators.exceptions.ValidationException;
 
 public final class Validator<T, U, V> {
     private final Limiter<T> xLimiter;

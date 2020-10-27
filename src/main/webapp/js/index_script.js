@@ -60,5 +60,5 @@ function buildClickRequest(x, y) {
     document.getElementById('x-field').value = x.toString();
     $("#x-field").val(x.toString());
     $("#y-field").val(y.toString());
-    $("#request").submit();
+    $("#request").submit(); //todo понять что тут не так
 }

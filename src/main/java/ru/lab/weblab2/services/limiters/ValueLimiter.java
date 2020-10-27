@@ -1,4 +1,4 @@
-package ru.lab.weblab2.services.validators.limiters;
+package ru.lab.weblab2.services.limiters;
 
 import java.util.Set;
 

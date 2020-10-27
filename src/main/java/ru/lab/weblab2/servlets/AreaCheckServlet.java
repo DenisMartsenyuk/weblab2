@@ -4,8 +4,8 @@ import ru.lab.weblab2.model.entities.Point;
 import ru.lab.weblab2.model.storages.PointsStorage;
 import ru.lab.weblab2.services.checkers.Field;
 import ru.lab.weblab2.services.factories.FactoryPoint;
-import ru.lab.weblab2.services.validators.ValidationException;
-import ru.lab.weblab2.services.validators.parsers.exceptions.ParserException;
+import ru.lab.weblab2.services.validators.exceptions.ValidationException;
+import ru.lab.weblab2.services.parsers.exceptions.ParserException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//TODO add logging with log4j2
 public class AreaCheckServlet extends HttpServlet {
 
     //TODO block request with non POST method
@@ -34,7 +33,7 @@ public class AreaCheckServlet extends HttpServlet {
         FactoryPoint factoryPoint = FactoryPoint.getInstance(new Field());
         try {
             Point point = factoryPoint.buildPoint(x, y, r);
-            pointsStorage.addPoint(point);
+            pointsStorage.addPoint(point); //todo пересмотреть раоту этого сервлета
             context.setAttribute("pointsStorage", pointsStorage);
             context.setAttribute("allPoints", pointsStorage.getAllPoints());
             context.setAttribute("dividedPoints", pointsStorage.getDividedPoints(point.getR()));

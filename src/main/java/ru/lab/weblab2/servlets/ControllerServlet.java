@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-//TODO Add logging with log4j2
 public class ControllerServlet extends HttpServlet {
 
     private Map<String, String> typesRequests;
