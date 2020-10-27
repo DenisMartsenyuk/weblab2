@@ -11,7 +11,6 @@ import ru.lab.weblab2.services.parsers.DoubleParser;
 import ru.lab.weblab2.services.parsers.Parser;
 import ru.lab.weblab2.services.parsers.exceptions.ParserException;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public final class FactoryPoint {
@@ -25,12 +24,7 @@ public final class FactoryPoint {
         this.field = field;
         this.doubleParser = new DoubleParser();
 
-        Set<Double> rValues = new HashSet<>(); //todo мб заполнить как-то иначе
-        rValues.add(1.0);
-        rValues.add(1.5);
-        rValues.add(2.0);
-        rValues.add(2.5);
-        rValues.add(3.0);
+        Set<Double> rValues = Set.of(1.0, 1.5, 2.0, 2.5, 3.0);
         Limiter xyInterval = new IntervalLimiter(-5.0, 5.0, false, false);
         this.validator = new Validator<>(xyInterval, xyInterval, new ValueLimiter<>(rValues));
     }

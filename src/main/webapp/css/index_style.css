@@ -75,6 +75,7 @@ aside {
 
 #table-result {
     width: 100%;
+    height: var(--height);
     border-collapse: collapse;
     border-radius: var(--border-radius);
 }

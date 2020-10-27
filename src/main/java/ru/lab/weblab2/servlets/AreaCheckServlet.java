@@ -37,7 +37,6 @@ public class AreaCheckServlet extends HttpServlet {
             context.setAttribute("lastR", r);
             context.setAttribute("pointsStorage", pointsStorage);
             context.setAttribute("allPoints", pointsStorage.getAllPoints());
-            context.setAttribute("dividedPoints", pointsStorage.getDividedPoints(point.getR()));
             request.setAttribute("result", point.getHit());
             request.getRequestDispatcher("/result.jsp").forward(request, response);
         } catch (ParserException | ValidationException e) {

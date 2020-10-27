@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index_style.css" type="text/css">
 </head>
 <body id="main-doc">
+<input type="hidden" value="${lastR}" id="lastR">
+
 <header>
     <h1>Лабораторная работа №2. Вариант: 4577.</h1>
 </header>
@@ -59,12 +61,6 @@
                     <g id="point-storage">
 
                     </g>
-<%--                    <c:forEach items="${dividedPoints}" var="point">--%>
-<%--                        <c:set value="${150 + point.x * 100 / point.r}" var="cx"></c:set>--%>
-<%--                        <c:set value="${150 - point.y * 100 / point.r}" var="cy"></c:set>--%>
-<%--                        <circle class="points" r="3" cx="${cx}" cy="${cy}"></circle>--%>
-<%--                    </c:forEach>--%>
-
                     <polygon points="0,0 0,300 300,300, 300,0" opacity="0"></polygon>
                 </svg>
             </div>

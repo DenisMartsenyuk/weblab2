@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    updateCheckBox($("#lastR").val());
+    drawPoints();
+});
+
+
 function clickSvg(evt) {
     let element = evt.target;
     let position = element.getBoundingClientRect();
@@ -11,10 +17,20 @@ function clickSvg(evt) {
 function selectCheckBox(checkBox) {
     $(':checkbox[name="r"]').prop("checked", false);
     $(checkBox).prop("checked", true);
-    drawPoints(checkBox.value);
+    drawPoints();
 }
 
-function drawPoints(value) {
+function updateCheckBox(value) {
+    console.log(value);
+    $('input[name="r"]').each(function (index, elem) {
+        if ($(elem).val() == value){
+            selectCheckBox($(elem));
+        }
+    });
+}
+
+function drawPoints() {
+    let value = $('input[name="r"]:checked').val();
     let table = document.querySelector('#table-result');
     let group = document.getElementById("point-storage");
     let points = "";
